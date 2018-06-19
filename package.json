@@ -1,6 +1,6 @@
 {
   "name": "typio",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Util for casting any object to specified model with typescript type inference",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/arvitaly/typio.git"
   },
-  "keywords": ["types", "typescript", "cast", "interfaces", "check"],
+  "keywords": [
+    "types",
+    "typescript",
+    "cast",
+    "interfaces",
+    "check"
+  ],
   "author": "arvitaly",
   "license": "ISC",
   "bugs": {
