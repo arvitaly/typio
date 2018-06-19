@@ -36,6 +36,7 @@ const raw = JSON.parse(JSON.stringify({
     opt2: "-100.5",
     date1: dt1.toString(),
     arr1: ["str1", "15"],
+    arr2: ["str2", "str3"],
 }));
 // call typio with raw-object and model
 const result = typio(raw, {
@@ -50,6 +51,7 @@ const result = typio(raw, {
     opt2: opt(float()),
     date1: date(),
     arr1: [str(), num()], // tuple
+    arr2: [str()],
 });
 // check types, all types cast to model, if they can
 expect(result.bool1).toBe(true);
@@ -61,6 +63,7 @@ expect(result.opt1).toBe(undefined);
 expect(result.opt2).toBe(-100.5);
 expect(result.date1.getTime()).toBe(dt1.getTime());
 expect(result.arr1).toEqual(["str1", 15]);
+expect(result.arr2).toEqual(["str2", "str3"]);
 
 ```
 
