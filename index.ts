@@ -12,5 +12,6 @@ export { num } from "./types/num";
 export { opt } from "./types/opt";
 export { str } from "./types/str";
 
+export { match } from "./operators/match";
 export { max } from "./operators/max";
 export { min } from "./operators/min";

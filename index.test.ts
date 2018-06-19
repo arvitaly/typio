@@ -1,4 +1,4 @@
-import { bool, date, enume, float, int, max, min, num, opt, str, typio } from ".";
+import { bool, date, enume, float, int, match, max, min, num, opt, str, typio } from ".";
 
 enum TestEnum {
     EnumValue1 = "EnumValue1",
@@ -29,7 +29,7 @@ it("typio", () => {
         opt1: opt(str()),
         opt2: opt(float()),
         date1: date(),
-        arr1: [str(), num()],
+        arr1: [str(match(new RegExp("str"))), num()],
     });
 
     expect(result.bool1).toBe(true);

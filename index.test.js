@@ -31,7 +31,7 @@ it("typio", () => {
         opt1: _1.opt(_1.str()),
         opt2: _1.opt(_1.float()),
         date1: _1.date(),
-        arr1: [_1.str(), _1.num()],
+        arr1: [_1.str(_1.match(new RegExp("str"))), _1.num()],
     });
     expect(result.bool1).toBe(true);
     expect(result.str1.substr(0, 2)).toBe("20");

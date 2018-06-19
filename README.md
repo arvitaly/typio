@@ -88,6 +88,8 @@ function str(...operators: Array<TypioOperator<string>>): string
 ## Operators
 
 ```typescript
+
+// MAX
 interface MaxOperator {
     (maxValue: number): TypioOperator<number | string | any[]>;
 }
@@ -97,6 +99,7 @@ interface MaxOperator {
 
 function max: MaxOperator;
 
+// MIN
 interface MinOperator {
     (minValue: number): TypioOperator<number | string | any[]>;
 }
@@ -104,6 +107,13 @@ interface MinOperator {
     (minValue: Date): TypioOperator<Date>;
 }
 function min: MinOperator;
+
+// MATCH
+interface MatchOperator {
+    (regexp: RegExp): TypioOperator<string>;
+}
+
+function match: MatchOperator;
 ```
 
 # Test
