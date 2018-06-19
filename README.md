@@ -106,8 +106,6 @@ interface MinOperator {
 function min: MinOperator;
 ```
 
-```
-
 # Test
 
     npm install

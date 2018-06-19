@@ -29,7 +29,7 @@ describe("min tests", () => {
         });
         it("when value is Date and less than model should return error-string", () => {
             expect(min(new Date("2011-01-01 00:00:00"))(new Date("2010-01-01 00:00:00")))
-                .toBe("Value should be greater or equal Sat Jan 01 2011 00:00:00 GMT+0300 (Russia TZ 2 Standard Time)");
+                .toBe("Value should be greater or equal Fri, 31 Dec 2010 21:00:00 GMT");
         });
     });
     describe("array", () => {

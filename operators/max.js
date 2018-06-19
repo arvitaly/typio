@@ -10,7 +10,8 @@ exports.max = ((maxValue) => {
             if (!(value instanceof Date)) {
                 throw new Error("Value should be instance of Date");
             }
-            return value.getTime() <= maxValue.getTime() ? true : "Value should be less or equal " + maxValue;
+            return value.getTime() <= maxValue.getTime() ? true : "Value should be less or equal "
+                + maxValue.toUTCString();
         }
         if (Array.isArray(value)) {
             return value.length <= maxValue ? true : "Length of array should be less or equal "

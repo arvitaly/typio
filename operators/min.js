@@ -10,7 +10,8 @@ exports.min = ((minValue) => {
             if (!(value instanceof Date)) {
                 throw new Error("Value should be instance of Date");
             }
-            return value.getTime() >= minValue.getTime() ? true : "Value should be greater or equal " + minValue;
+            return value.getTime() >= minValue.getTime() ? true : "Value should be greater or equal "
+                + minValue.toUTCString();
         }
         if (Array.isArray(value)) {
             return value.length >= minValue ? true : "Length of array should be greater or equal "

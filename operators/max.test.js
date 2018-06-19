@@ -30,7 +30,7 @@ describe("max tests", () => {
         });
         it("when value is Date and greater than model should return error-string", () => {
             expect(max_1.max(new Date("2011-01-01 00:00:00"))(new Date("2012-01-01 00:00:00")))
-                .toBe("Value should be less or equal Sat Jan 01 2011 00:00:00 GMT+0300 (Russia TZ 2 Standard Time)");
+                .toBe("Value should be less or equal Fri, 31 Dec 2010 21:00:00 GMT");
         });
     });
     describe("array", () => {
