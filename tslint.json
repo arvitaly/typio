@@ -1,0 +1,10 @@
+{
+    "extends": [
+        "tslint:latest"
+    ],
+    "rules": {
+        "object-literal-sort-keys": false,
+        "interface-name": false,
+        "callable-types": false
+    }
+}

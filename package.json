@@ -1,0 +1,29 @@
+{
+  "name": "typio",
+  "version": "0.0.1",
+  "description": "Util for casting any object to specified model with typescript type inference",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && tslint --project tsconfig.json && jest --verbose --coverage",
+    "watch:test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arvitaly/typio.git"
+  },
+  "keywords": ["types", "typescript", "cast", "interfaces", "check"],
+  "author": "arvitaly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arvitaly/typio/issues"
+  },
+  "homepage": "https://github.com/arvitaly/typio#readme",
+  "jest": {},
+  "devDependencies": {
+    "@types/jest": "^23.1.0",
+    "coveralls": "^3.0.1",
+    "jest": "^23.1.0",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2"
+  }
+}
