@@ -23,13 +23,16 @@ describe("max tests", () => {
         });
     });
     describe("Date", () => {
+        const dtEqual = "Wed, 15 Dec 2010 21:00:00 GMT";
+        const dtGreater = "Thu, 16 Dec 2010 21:00:00 GMT";
+        const dtLess = "Tue, 14 Dec 2010 21:00:00 GMT";
         it("when value is Date and less or equal model should return true", () => {
-            expect(max(new Date("2011-01-01 00:00:00"))(new Date("2010-01-01 00:00:00"))).toBe(true);
-            expect(max(new Date("2011-01-01 00:00:00"))(new Date("2011-01-01 00:00:00"))).toBe(true);
+            expect(max(new Date(dtEqual))(new Date(dtEqual))).toBe(true);
+            expect(max(new Date(dtEqual))(new Date(dtLess))).toBe(true);
         });
         it("when value is Date and greater than model should return error-string", () => {
-            expect(max(new Date("2011-01-01 00:00:00"))(new Date("2012-01-01 00:00:00")))
-                .toBe("Value should be less or equal Fri, 31 Dec 2010 21:00:00 GMT");
+            expect(max(new Date(dtEqual))(new Date(dtGreater)))
+                .toBe("Value should be less or equal " + dtEqual);
         });
     });
     describe("array", () => {
