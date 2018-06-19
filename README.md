@@ -69,7 +69,11 @@ expect(result.arr1).toEqual(["str1", 15]);
 ```typescript
 function typio<T extends any>(obj: any, model: T): T
 
-type TypioOperator<T> = ((value: T) => true | string) & { label: string }; // operator return true or error-string
+// operator return true or false or error-string (equal false)
+type TypioOperator<T> = ((value: T) => true | false | string) & { label: string };
+
+type CastResult<T> = ({ type: "error", error?: string, operator?: string, value: T }) |
+    ({ type: "success", value: T });
 ```
 
 ## Types

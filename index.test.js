@@ -1,12 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// tslint:disable-next-line:no-implicit-dependencies
+const with_error_1 = require("with-error");
 const _1 = require(".");
+const InvalidTypeError_1 = require("./InvalidTypeError");
 var TestEnum;
 (function (TestEnum) {
     TestEnum["EnumValue1"] = "EnumValue1";
     TestEnum["EnumValue2"] = "EnumValue2";
 })(TestEnum || (TestEnum = {}));
-it("typio", () => {
+it("when all values is correct, should return casted object", () => {
     const dt1 = new Date("2011-01-02 00:00:00");
     const raw = JSON.parse(JSON.stringify({
         bool1: true,
@@ -42,4 +45,13 @@ it("typio", () => {
     expect(result.opt2).toBe(-100.5);
     expect(result.date1.getTime()).toBe(dt1.getTime());
     expect(result.arr1).toEqual(["str1", 15]);
+});
+it("when values not correct, should throw error", () => {
+    const { error } = with_error_1.default(() => _1.typio({}, { x: 1 }));
+    expect(error).toEqual(new InvalidTypeError_1.InvalidTypeError({
+        message: "For model `1` value should not be undefined",
+        operator: undefined,
+        path: ".x",
+        value: undefined,
+    }));
 });

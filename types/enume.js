@@ -1,13 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const TypioType_1 = require("./../TypioType");
+function cast(enumerate, value) {
+    if (!Object.keys(enumerate).find((e) => enumerate[e] === value)) {
+        return {
+            type: "error",
+            error: "Not found in enumerate `" + JSON.stringify(enumerate) + "`",
+            value,
+        };
+        throw new Error("Not found value `" + value + "` in enumerate `" + JSON.stringify(enumerate) + "`");
+    }
+    return {
+        type: "success",
+        value,
+    };
+}
+exports.cast = cast;
 function enume(enumerate, ...operators) {
-    return new TypioType_1.TypioType(operators, (value) => {
-        if (!Object.keys(enumerate).find((e) => enumerate[e] === value)) {
-            throw new Error("Not found value `" + value + "` in enumerate `" + JSON.stringify(enumerate) + "`");
-        }
-        return value;
-    });
+    return new TypioType_1.TypioType(operators, (value) => cast(enumerate, value));
 }
 exports.enume = enume;
 exports.default = enume;

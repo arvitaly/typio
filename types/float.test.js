@@ -1,12 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const typio_1 = require("./../typio");
+const testutils_1 = require("./../util/testutils");
 const float_1 = require("./float");
-describe("float tests", () => {
-    it("when value can be float, should cast to float", () => {
-        expect(typio_1.typio("1.5", float_1.float())).toBe(1.5);
-    });
-    it("when value can't be float, should throw error", () => {
-        expect(typio_1.typio.bind(undefined, "x", float_1.float())).toThrowError("Value `x` is not float");
-    });
-});
+const tests = [{
+        describe: "float tests",
+        expectations: [{
+                name: "when value can be float, should cast to float",
+                value: "1.5",
+                expected: testutils_1.expectSuccess(1.5),
+            }, {
+                name: "when value can't be float, should return error",
+                value: "x",
+                expected: testutils_1.expectError("is not float"),
+            }],
+    }];
+testutils_1.runTestsForCasting(float_1.cast, tests);

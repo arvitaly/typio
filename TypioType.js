@@ -7,14 +7,24 @@ class TypioType {
     }
     cast(obj) {
         const initValue = this.castFn(obj);
+        if (initValue.type === "error") {
+            return initValue;
+        }
         for (const operator of this.operators) {
-            const operatorResult = operator(initValue);
+            const operatorResult = operator(initValue.value);
             if (operatorResult !== true) {
-                throw new Error("Invalid value `"
-                    + initValue + "` for operator `" + operator.label + "`, error: " + operatorResult);
+                return {
+                    type: "error",
+                    operator: operator.label,
+                    value: initValue.value,
+                    error: (typeof (operatorResult) === "string" ? operatorResult : undefined),
+                };
             }
         }
-        return initValue;
+        return {
+            type: "success",
+            value: initValue.value,
+        };
     }
 }
 exports.TypioType = TypioType;

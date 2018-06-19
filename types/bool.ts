@@ -1,12 +1,21 @@
-import { TypioOperator } from "./../typings";
+import { CastResult, TypioOperator } from "./../typings";
 import { TypioType } from "./../TypioType";
 
+export function cast(value: any): CastResult<boolean> {
+    if (value !== true && value !== false) {
+        return {
+            type: "error",
+            error: "should be true or false",
+            value,
+        };
+    }
+    return {
+        type: "success",
+        value,
+    };
+}
+
 export function bool(...operators: Array<TypioOperator<boolean>>): boolean {
-    return new TypioType(operators, (value) => {
-        if (value !== true && value !== false) {
-            throw new Error("Value `" + value + "` should be boolean");
-        }
-        return value;
-    }) as any;
+    return new TypioType(operators, cast) as any;
 }
 export default bool;

@@ -1,13 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const typio_1 = require("./../typio");
+const testutils_1 = require("./../util/testutils");
 const str_1 = require("./str");
-describe("str tests", () => {
-    it("when value is string or number, should return stringify value", () => {
-        expect(typio_1.typio("test", str_1.str())).toBe("test");
-        expect(typio_1.typio(1.1, str_1.str())).toBe("1.1");
-    });
-    it("when value is not string or number, should throw error", () => {
-        expect(typio_1.typio.bind(undefined, {}, str_1.str())).toThrowError("Value `[object Object]` should be string or number");
-    });
-});
+const tests = [{
+        describe: "str tests",
+        expectations: [{
+                name: "when value is string should return success equal value",
+                value: "test",
+                expected: testutils_1.expectSuccess("test"),
+            }, {
+                name: "when value is number should return success value casted to string",
+                value: 1.1,
+                expected: testutils_1.expectSuccess("1.1"),
+            }, {
+                name: "when value is not string and not number should return error",
+                value: { a: {} },
+                expected: testutils_1.expectError("should be string or number"),
+            }],
+    }];
+testutils_1.runTestsForCasting(str_1.cast, tests);

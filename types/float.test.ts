@@ -1,11 +1,16 @@
-import { typio } from "./../typio";
-import { float } from "./float";
+import { expectError, expectSuccess, runTestsForCasting } from "./../util/testutils";
+import { cast } from "./float";
 
-describe("float tests", () => {
-    it("when value can be float, should cast to float", () => {
-        expect(typio("1.5", float())).toBe(1.5);
-    });
-    it("when value can't be float, should throw error", () => {
-        expect(typio.bind(undefined, "x", float())).toThrowError("Value `x` is not float");
-    });
-});
+const tests = [{
+    describe: "float tests",
+    expectations: [{
+        name: "when value can be float, should cast to float",
+        value: "1.5",
+        expected: expectSuccess(1.5),
+    }, {
+        name: "when value can't be float, should return error",
+        value: "x",
+        expected: expectError("is not float"),
+    }],
+}];
+runTestsForCasting(cast, tests);

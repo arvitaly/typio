@@ -1,12 +1,20 @@
-import { typio } from "./../typio";
-import { str } from "./str";
+import { expectError, expectSuccess, runTestsForCasting } from "./../util/testutils";
+import { cast } from "./str";
 
-describe("str tests", () => {
-    it("when value is string or number, should return stringify value", () => {
-        expect(typio("test", str())).toBe("test");
-        expect(typio(1.1, str())).toBe("1.1");
-    });
-    it("when value is not string or number, should throw error", () => {
-        expect(typio.bind(undefined, {}, str())).toThrowError("Value `[object Object]` should be string or number");
-    });
-});
+const tests = [{
+    describe: "str tests",
+    expectations: [{
+        name: "when value is string should return success equal value",
+        value: "test",
+        expected: expectSuccess("test"),
+    }, {
+        name: "when value is number should return success value casted to string",
+        value: 1.1,
+        expected: expectSuccess("1.1"),
+    }, {
+        name: "when value is not string and not number should return error",
+        value: { a: {} },
+        expected: expectError("should be string or number"),
+    }],
+}];
+runTestsForCasting(cast, tests);

@@ -1,13 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const typio_1 = require("./../typio");
+const testutils_1 = require("./../util/testutils");
 const bool_1 = require("./bool");
-describe("bool tests", () => {
-    it("when model is bool, value should be boolean", () => {
-        expect(typio_1.typio(true, bool_1.bool())).toBe(true);
-        expect(typio_1.typio(false, bool_1.bool())).toBe(false);
-    });
-    it("when model is bool and value is not bool should throw error", () => {
-        expect(typio_1.typio.bind(undefined, "x", bool_1.bool())).toThrowError("Value `x` should be boolean");
-    });
-});
+const tests = [{
+        describe: "bool tests",
+        expectations: [{
+                name: "when value is true, return success with `true`",
+                value: true,
+                expected: testutils_1.expectSuccess(true),
+            }, {
+                name: "when value is false, return success with `false`",
+                value: false,
+                expected: testutils_1.expectSuccess(false),
+            }, {
+                name: "when model is bool and value is not bool should return error",
+                value: "x",
+                expected: testutils_1.expectError("should be true or false"),
+            }],
+    }];
+testutils_1.runTestsForCasting(bool_1.cast, tests);

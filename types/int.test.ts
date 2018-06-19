@@ -1,12 +1,20 @@
-import { typio } from "./../typio";
-import { int } from "./int";
+import { expectError, expectSuccess, runTestsForCasting } from "./../util/testutils";
+import { cast } from "./int";
 
-describe("int tests", () => {
-    it("when value can be integer, should cast to integer", () => {
-        expect(typio("50", int())).toBe(50);
-    });
-    it("when value can't be integer, should throw error", () => {
-        expect(typio.bind(undefined, "1.5", int())).toThrowError("Value `1.5` is not integer");
-        expect(typio.bind(undefined, "x", int())).toThrowError("Value `x` is not integer");
-    });
-});
+const tests = [{
+    describe: "int tests",
+    expectations: [{
+        name: "when value can be integer, should cast to integer",
+        value: "50",
+        expected: expectSuccess(50),
+    }, {
+        name: "hen value can't be integer, should return error",
+        value: "x",
+        expected: expectError("is not integer"),
+    }, {
+        name: "when value can't be integer, should return error",
+        value: "1.5",
+        expected: expectError("is not integer"),
+    }],
+}];
+runTestsForCasting(cast, tests);

@@ -1,13 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const typio_1 = require("./../typio");
+const testutils_1 = require("./../util/testutils");
 const int_1 = require("./int");
-describe("int tests", () => {
-    it("when value can be integer, should cast to integer", () => {
-        expect(typio_1.typio("50", int_1.int())).toBe(50);
-    });
-    it("when value can't be integer, should throw error", () => {
-        expect(typio_1.typio.bind(undefined, "1.5", int_1.int())).toThrowError("Value `1.5` is not integer");
-        expect(typio_1.typio.bind(undefined, "x", int_1.int())).toThrowError("Value `x` is not integer");
-    });
-});
+const tests = [{
+        describe: "int tests",
+        expectations: [{
+                name: "when value can be integer, should cast to integer",
+                value: "50",
+                expected: testutils_1.expectSuccess(50),
+            }, {
+                name: "hen value can't be integer, should return error",
+                value: "x",
+                expected: testutils_1.expectError("is not integer"),
+            }, {
+                name: "when value can't be integer, should return error",
+                value: "1.5",
+                expected: testutils_1.expectError("is not integer"),
+            }],
+    }];
+testutils_1.runTestsForCasting(int_1.cast, tests);

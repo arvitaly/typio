@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const typio_1 = require("./../typio");
 const enume_1 = require("./enume");
 var Test;
 (function (Test) {
@@ -9,10 +8,16 @@ var Test;
 })(Test || (Test = {}));
 describe("enume tests", () => {
     it("when enumerate contains value, should return value", () => {
-        expect(typio_1.typio("value1", enume_1.default(Test))).toBe(Test.Value1);
+        expect(enume_1.cast(Test, "value1")).toEqual({
+            type: "success",
+            value: Test.Value1,
+        });
     });
     it("when enumerate not contains value, should throw error", () => {
-        expect(typio_1.typio.bind(undefined, "x", enume_1.default(Test)))
-            .toThrowError('Not found value `x` in enumerate `{"Value1":"value1","Value2":"value2"}`');
+        expect(enume_1.cast(Test, "x")).toEqual({
+            type: "error",
+            value: "x",
+            error: 'Not found in enumerate `{"Value1":"value1","Value2":"value2"}`',
+        });
     });
 });

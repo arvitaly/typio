@@ -1,10 +1,12 @@
+// tslint:disable-next-line:no-implicit-dependencies
+import withError from "with-error";
 import { bool, date, enume, float, int, match, max, min, num, opt, str, typio } from ".";
-
+import { InvalidTypeError } from "./InvalidTypeError";
 enum TestEnum {
     EnumValue1 = "EnumValue1",
     EnumValue2 = "EnumValue2",
 }
-it("typio", () => {
+it("when all values is correct, should return casted object", () => {
     const dt1 = new Date("2011-01-02 00:00:00");
     const raw = JSON.parse(JSON.stringify({
         bool1: true,
@@ -41,4 +43,13 @@ it("typio", () => {
     expect(result.opt2).toBe(-100.5);
     expect(result.date1.getTime()).toBe(dt1.getTime());
     expect(result.arr1).toEqual(["str1", 15]);
+});
+it("when values not correct, should throw error", () => {
+    const { error } = withError(() => typio({}, { x: 1 }));
+    expect(error).toEqual(new InvalidTypeError({
+        message: "For model `1` value should not be undefined",
+        operator: undefined,
+        path: ".x",
+        value: undefined,
+    }));
 });
