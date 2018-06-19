@@ -7,9 +7,6 @@ class InvalidTypeError extends Error {
         this.config = config;
         this.errorStr = errorStr;
     }
-    toString() {
-        return this.errorStr;
-    }
 }
 exports.InvalidTypeError = InvalidTypeError;
 function formatError(config) {

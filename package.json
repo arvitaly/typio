@@ -24,7 +24,15 @@
     "url": "https://github.com/arvitaly/typio/issues"
   },
   "homepage": "https://github.com/arvitaly/typio#readme",
-  "jest": {},
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/**/*.{js,jsx}",
+      "!<rootDir>/coverage/**",
+      "!<rootDir>/util/isNumeric.js",
+      "!<rootDir>/util/isObject.js",
+      "!<rootDir>/util/isPlainObject.js"
+    ]
+  },
   "devDependencies": {
     "@types/jest": "^23.1.0",
     "coveralls": "^3.0.1",

@@ -8,7 +8,6 @@ export function cast<T>(enumerate: T, value: any): CastResult<T[keyof T]> {
             error: "Not found in enumerate `" + JSON.stringify(enumerate) + "`",
             value,
         };
-        throw new Error("Not found value `" + value + "` in enumerate `" + JSON.stringify(enumerate) + "`");
     }
     return {
         type: "success",

@@ -13,9 +13,6 @@ export class InvalidTypeError extends Error {
         this.config = config;
         this.errorStr = errorStr;
     }
-    public toString() {
-        return this.errorStr;
-    }
 }
 export function formatError(config: InvalidTypeErrorConfig) {
     return "InvalidTypError: \nPath: " + config.path +

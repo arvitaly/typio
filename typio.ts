@@ -30,7 +30,7 @@ export function typio<T extends any>(obj: any, model: T, path = ""): T {
         if (!Array.isArray(obj)) {
             throw new InvalidTypeError({
                 path,
-                message: "Object is not array, but model is array",
+                message: "Value is not array, but model is array",
                 value: obj,
             });
         }

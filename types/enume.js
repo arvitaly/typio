@@ -8,7 +8,6 @@ function cast(enumerate, value) {
             error: "Not found in enumerate `" + JSON.stringify(enumerate) + "`",
             value,
         };
-        throw new Error("Not found value `" + value + "` in enumerate `" + JSON.stringify(enumerate) + "`");
     }
     return {
         type: "success",

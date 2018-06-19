@@ -34,6 +34,10 @@ describe("min tests", () => {
             expect(min(new Date(dtEqual))(new Date(dtLess)))
                 .toBe("Value should be greater or equal " + dtEqual);
         });
+        it("when value is not Date, but model is Date, should return error-string", () => {
+            expect(min(new Date(dtEqual))("" as any))
+                .toBe("Value should be instance of Date");
+        });
     });
     describe("array", () => {
         it("when value is array and length greater or equal model should return true", () => {
