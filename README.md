@@ -5,7 +5,7 @@ Util for casting any object to specified model with typescript type inference
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Demo")
+![alt text](typio/typio.png "Demo")
 
 # Install
 
