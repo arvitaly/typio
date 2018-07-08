@@ -45,8 +45,7 @@ describe("typio tests", () => {
             operator: undefined,
         }));
     });
-    it("when model is array and value is array and model length is one," +
-        " should apply first model to every values", () => {
+    it("when model is array and value is array and model length is one," + " should apply first model to every values", () => {
         expect(typio_1.typio([1, 1], [1])).toEqual([1, 1]);
     });
     it("when model is array and value is array and model length more than one," +

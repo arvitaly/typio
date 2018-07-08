@@ -16,7 +16,7 @@ function cast(enumerate, value) {
 }
 exports.cast = cast;
 function enume(enumerate, ...operators) {
-    return new TypioType_1.TypioType(operators, (value) => cast(enumerate, value));
+    return new TypioType_1.TypioType(operators, (value) => cast(enumerate, value), "enum");
 }
 exports.enume = enume;
 exports.default = enume;

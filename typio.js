@@ -4,7 +4,7 @@ const InvalidTypeError_1 = require("./InvalidTypeError");
 const TypioType_1 = require("./TypioType");
 const isPlainObject_1 = require("./util/isPlainObject");
 function typio(obj, model, path = "") {
-    if (typeof (model) === "function") {
+    if (typeof model === "function") {
         return model(obj);
     }
     if (model instanceof TypioType_1.TypioType) {
@@ -19,7 +19,7 @@ function typio(obj, model, path = "") {
         }
         return res.value;
     }
-    if (typeof (model) !== "undefined" && typeof (obj) === "undefined") {
+    if (typeof model !== "undefined" && typeof obj === "undefined") {
         throw new InvalidTypeError_1.InvalidTypeError({
             path,
             message: "For model `" + JSON.stringify(model) + "` value should not be undefined",

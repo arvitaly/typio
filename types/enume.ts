@@ -16,6 +16,6 @@ export function cast<T>(enumerate: T, value: any): CastResult<T[keyof T]> {
 }
 
 export function enume<T>(enumerate: T, ...operators: Array<TypioOperator<keyof T>>): T[keyof T] {
-    return new TypioType(operators, (value) => cast(enumerate, value) as any) as any;
+    return new TypioType(operators, (value) => cast(enumerate, value) as any, "enum") as any;
 }
 export default enume;

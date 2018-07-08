@@ -17,6 +17,6 @@ export function cast(value: any): CastResult<number> {
 }
 
 export function float(...operators: Array<TypioOperator<number>>): number {
-    return new TypioType(operators, cast) as any;
+    return new TypioType(operators, cast, "float") as any;
 }
 export default float;

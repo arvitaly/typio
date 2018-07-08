@@ -17,7 +17,7 @@ function cast(value) {
 }
 exports.cast = cast;
 function date(...operators) {
-    return new TypioType_1.TypioType(operators, cast);
+    return new TypioType_1.TypioType(operators, cast, "date");
 }
 exports.date = date;
 exports.default = date;

@@ -17,7 +17,7 @@ function cast(value) {
 }
 exports.cast = cast;
 function int(...operators) {
-    return new TypioType_1.TypioType(operators, cast);
+    return new TypioType_1.TypioType(operators, cast, "int");
 }
 exports.int = int;
 exports.default = int;

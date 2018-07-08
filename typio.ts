@@ -3,7 +3,7 @@ import { TypioType } from "./TypioType";
 import { isPlainObject } from "./util/isPlainObject";
 
 export function typio<T extends any>(obj: any, model: T, path = ""): T {
-    if (typeof (model) === "function") {
+    if (typeof model === "function") {
         return model(obj);
     }
     if (model instanceof TypioType) {
@@ -18,7 +18,7 @@ export function typio<T extends any>(obj: any, model: T, path = ""): T {
         }
         return res.value;
     }
-    if (typeof (model) !== "undefined" && typeof (obj) === "undefined") {
+    if (typeof model !== "undefined" && typeof obj === "undefined") {
         throw new InvalidTypeError({
             path,
             message: "For model `" + JSON.stringify(model) + "` value should not be undefined",

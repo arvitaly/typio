@@ -17,7 +17,7 @@ function cast(value) {
 }
 exports.cast = cast;
 function float(...operators) {
-    return new TypioType_1.TypioType(operators, cast);
+    return new TypioType_1.TypioType(operators, cast, "float");
 }
 exports.float = float;
 exports.default = float;

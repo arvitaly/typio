@@ -1,10 +1,12 @@
 import { CastResult, TypioOperator } from "./typings";
 export class TypioType<T> {
+    // tslint:disable-next-line:variable-name
     constructor(
         protected operators: Array<TypioOperator<T>>,
-        protected castFn: (value: any) => CastResult<T>) {
-
-    }
+        protected castFn: (value: any) => CastResult<T>,
+        // tslint:disable-next-line:variable-name
+        public name = "",
+    ) {}
     public cast(obj: any): CastResult<T> {
         const initValue = this.castFn(obj);
         if (initValue.type === "error") {
@@ -17,7 +19,7 @@ export class TypioType<T> {
                     type: "error",
                     operator: operator.label,
                     value: initValue.value,
-                    error: (typeof (operatorResult) === "string" ? operatorResult : undefined),
+                    error: typeof operatorResult === "string" ? operatorResult : undefined,
                 };
             }
         }

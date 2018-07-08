@@ -15,8 +15,14 @@ export class InvalidTypeError extends Error {
     }
 }
 export function formatError(config: InvalidTypeErrorConfig) {
-    return "InvalidTypError: \nPath: " + config.path +
+    return (
+        "InvalidTypError: \nPath: " +
+        config.path +
         (config.operator ? "\nOperator: " + config.operator : "") +
-        "\nMessage: " + config.message + "\nValue: " + config.value;
+        "\nMessage: " +
+        config.message +
+        "\nValue: " +
+        config.value
+    );
 }
 export default InvalidTypeError;

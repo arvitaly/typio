@@ -1,9 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class TypioType {
-    constructor(operators, castFn) {
+    // tslint:disable-next-line:variable-name
+    constructor(operators, castFn, 
+    // tslint:disable-next-line:variable-name
+    name = "") {
         this.operators = operators;
         this.castFn = castFn;
+        this.name = name;
     }
     cast(obj) {
         const initValue = this.castFn(obj);
@@ -17,7 +21,7 @@ class TypioType {
                     type: "error",
                     operator: operator.label,
                     value: initValue.value,
-                    error: (typeof (operatorResult) === "string" ? operatorResult : undefined),
+                    error: typeof operatorResult === "string" ? operatorResult : undefined,
                 };
             }
         }

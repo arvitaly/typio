@@ -5,12 +5,15 @@ describe("TypioType tests", () => {
     it("when operator return false should return error withour operator error description", () => {
         const operator = (() => false) as any;
         operator.label = "oper1";
-        const typ = new TypioType([operator], (): CastResult<any> => {
-            return {
-                type: "success",
-                value: "x",
-            };
-        });
+        const typ = new TypioType(
+            [operator],
+            (): CastResult<any> => {
+                return {
+                    type: "success",
+                    value: "x",
+                };
+            },
+        );
         const res = typ.cast("");
         expect(res).toEqual({
             type: "error",

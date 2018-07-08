@@ -16,7 +16,7 @@ function cast(value) {
 }
 exports.cast = cast;
 function bool(...operators) {
-    return new TypioType_1.TypioType(operators, cast);
+    return new TypioType_1.TypioType(operators, cast, "bool");
 }
 exports.bool = bool;
 exports.default = bool;

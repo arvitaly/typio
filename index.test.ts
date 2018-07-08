@@ -8,18 +8,20 @@ enum TestEnum {
 }
 it("when all values is correct, should return casted object", () => {
     const dt1 = new Date("2011-01-02 00:00:00");
-    const raw = JSON.parse(JSON.stringify({
-        bool1: true,
-        str1: 20,
-        int1: "30",
-        num1: "1.45",
-        obj1: {
-            enum1: "EnumValue1",
-        },
-        opt2: "-100.5",
-        date1: dt1.toString(),
-        arr1: ["str1", "15"],
-    }));
+    const raw = JSON.parse(
+        JSON.stringify({
+            bool1: true,
+            str1: 20,
+            int1: "30",
+            num1: "1.45",
+            obj1: {
+                enum1: "EnumValue1",
+            },
+            opt2: "-100.5",
+            date1: dt1.toString(),
+            arr1: ["str1", "15"],
+        }),
+    );
     const result = typio(raw, {
         bool1: bool(),
         str1: str(min(1), max(15)),
@@ -46,10 +48,12 @@ it("when all values is correct, should return casted object", () => {
 });
 it("when values not correct, should throw error", () => {
     const { error } = withError(() => typio({}, { x: 1 }));
-    expect(error).toEqual(new InvalidTypeError({
-        message: "For model `1` value should not be undefined",
-        operator: undefined,
-        path: ".x",
-        value: undefined,
-    }));
+    expect(error).toEqual(
+        new InvalidTypeError({
+            message: "For model `1` value should not be undefined",
+            operator: undefined,
+            path: ".x",
+            value: undefined,
+        }),
+    );
 });
