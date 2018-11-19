@@ -34,11 +34,11 @@
     ]
   },
   "devDependencies": {
-    "@types/jest": "^23.1.0",
-    "coveralls": "^3.0.1",
-    "jest": "^23.1.0",
-    "tslint": "^5.10.0",
-    "typescript": "^2.9.2",
-    "with-error": "^0.1.1"
+    "@types/jest": "^23.3.9",
+    "coveralls": "^3.0.2",
+    "jest": "^23.6.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6",
+    "with-error": "^0.1.2"
   }
 }
