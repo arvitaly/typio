@@ -47,16 +47,18 @@ function typioValue(obj, model, path = "") {
                 }),
             };
         }
-        if (model.length === 1) {
-            return {
-                status: "success",
-                value: obj.map((child, index) => typio(child, model[0], `${path}[${index}]`)),
-            };
+        const isTuple = model.length > 1;
+        const newValues = [];
+        for (const [index, child] of obj.entries()) {
+            const res = typioValue(child, model[isTuple ? index : 0], `${path}[${index}]`);
+            if (res.status === "error") {
+                return res;
+            }
+            newValues.push(res.value);
         }
-        // tuple
         return {
             status: "success",
-            value: model.map((m, index) => typio(obj[index], m, `${path}[${index}]`)),
+            value: newValues,
         };
     }
     if (isPlainObject_1.isPlainObject(model)) {
@@ -72,10 +74,14 @@ function typioValue(obj, model, path = "") {
         }
         let objKeys = Object.keys(obj);
         const res = {};
-        Object.keys(model).map((fieldName) => {
-            res[fieldName] = typio(obj[fieldName], model[fieldName], `${path}.${fieldName}`);
+        for (const fieldName of Object.keys(model)) {
+            const valRes = typioValue(obj[fieldName], model[fieldName], `${path}.${fieldName}`);
+            if (valRes.status === "error") {
+                return valRes;
+            }
+            res[fieldName] = valRes.value;
             objKeys = objKeys.filter((k) => k !== fieldName);
-        });
+        }
         if (objKeys.length > 0) {
             return {
                 status: "error",
