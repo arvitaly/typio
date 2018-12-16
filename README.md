@@ -18,7 +18,7 @@ Util for casting any object to specified model with typescript type inference
 # Usage
 
 ```typescript
-import { date, enume, float, max, min, num, opt, str, typio } from "typio";
+import { date, enume, float, max, min, num, opt, or, str, typio } from "typio";
 
 enum TestEnum {
     EnumValue1 = "EnumValue1",
@@ -39,6 +39,7 @@ const raw = JSON.parse(JSON.stringify({
     date1: dt1.toString(),
     arr1: ["str1", "15"],
     arr2: ["str2", "str3"],
+    or1: "Hello",
 }));
 // call typio with raw-object and model
 const result = typio(raw, {
@@ -54,6 +55,7 @@ const result = typio(raw, {
     date1: date(),
     arr1: [str(), num()], // tuple
     arr2: [str()],
+    or1: or(bool(), str(), num()),
 });
 // check types, all types cast to model, if they can
 expect(result.bool1).toBe(true);
@@ -66,6 +68,7 @@ expect(result.opt2).toBe(-100.5);
 expect(result.date1.getTime()).toBe(dt1.getTime());
 expect(result.arr1).toEqual(["str1", 15]);
 expect(result.arr2).toEqual(["str2", "str3"]);
+expect(result.or1).toBe("Hello");
 
 ```
 
@@ -91,6 +94,7 @@ function float(...operators: Array<TypioOperator<number>>): number
 function int(...operators: Array<TypioOperator<number>>): number
 function num(...operators: Array<TypioOperator<number>>): number
 function opt<T>(obj: T): T | undefined
+function or<T extends any[]>(objs: T): T[number];
 function str(...operators: Array<TypioOperator<string>>): string
 ```
 
