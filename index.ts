@@ -10,6 +10,7 @@ export { float } from "./types/float";
 export { int } from "./types/int";
 export { num } from "./types/num";
 export { opt } from "./types/opt";
+export { or } from "./types/or";
 export { str } from "./types/str";
 
 export { match } from "./operators/match";
