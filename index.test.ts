@@ -1,6 +1,6 @@
 // tslint:disable-next-line:no-implicit-dependencies
 import withError from "with-error";
-import { any, bool, date, enume, float, int, match, max, min, num, opt, or, str, typio } from ".";
+import { any, bool, date, empty, enume, float, int, match, max, min, num, opt, or, str, typio } from ".";
 import { InvalidTypeError } from "./InvalidTypeError";
 
 enum TestEnum {
@@ -40,6 +40,7 @@ it("when all values is correct, should return casted object", () => {
         arr1: [str(match(new RegExp("str"))), num()],
         or1: or(bool(), num(), str()),
         any1: any(),
+        empty1: empty(),
     });
 
     expect(result.bool1).toBe(true);
@@ -53,6 +54,7 @@ it("when all values is correct, should return casted object", () => {
     expect(result.arr1).toEqual(["str1", 15]);
     expect(result.or1).toBe("Hello");
     expect(result.any1).toEqual(any1);
+    expect(result.empty1).toBeUndefined();
 });
 it("when values not correct, should throw error", () => {
     const { error } = withError(() => typio({}, { x: 1 }));

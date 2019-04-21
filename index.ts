@@ -6,6 +6,7 @@ export { isObject } from "./util/isObject";
 export { any } from "./types/any";
 export { bool } from "./types/bool";
 export { date } from "./types/date";
+export { empty } from "./types/empty";
 export { enume } from "./types/enume";
 export { float } from "./types/float";
 export { int } from "./types/int";

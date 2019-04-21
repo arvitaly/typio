@@ -10,4 +10,7 @@ describe("opt tests", () => {
         expect(typio_1.typio({ test: 1 }, opt_1.opt({ test: 1 }))).toEqual({ test: 1 });
         expect(typio_1.typio("test", opt_1.opt("test"))).toBe("test");
     });
+    it("when value not exists, should return undefined", () => {
+        expect(typio_1.typio({}, { test: opt_1.opt(1) })).toEqual({ test: undefined });
+    });
 });
