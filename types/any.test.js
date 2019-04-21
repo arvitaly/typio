@@ -4,7 +4,7 @@ const any_1 = require("./any");
 const typio_1 = require("../typio");
 describe("any tests", () => {
     it("should return value as is", () => {
-        const value = "Hello";
+        const value = { obj: "value" };
         expect(typio_1.default(value, any_1.any())).toBe(value);
     });
 });

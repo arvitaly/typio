@@ -1,13 +1,15 @@
 // tslint:disable-next-line:no-implicit-dependencies
 import withError from "with-error";
-import { bool, date, enume, float, int, match, max, min, num, opt, or, str, typio } from ".";
+import { any, bool, date, enume, float, int, match, max, min, num, opt, or, str, typio } from ".";
 import { InvalidTypeError } from "./InvalidTypeError";
+
 enum TestEnum {
     EnumValue1 = "EnumValue1",
     EnumValue2 = "EnumValue2",
 }
 it("when all values is correct, should return casted object", () => {
     const dt1 = new Date("2011-01-02 00:00:00");
+    const any1 = { obj: "value" };
     const raw = JSON.parse(
         JSON.stringify({
             bool1: true,
@@ -21,6 +23,7 @@ it("when all values is correct, should return casted object", () => {
             date1: dt1.toString(),
             arr1: ["str1", "15"],
             or1: "Hello",
+            any1,
         }),
     );
     const result = typio(raw, {
@@ -36,6 +39,7 @@ it("when all values is correct, should return casted object", () => {
         date1: date(),
         arr1: [str(match(new RegExp("str"))), num()],
         or1: or(bool(), num(), str()),
+        any1: any(),
     });
 
     expect(result.bool1).toBe(true);
@@ -48,6 +52,7 @@ it("when all values is correct, should return casted object", () => {
     expect(result.date1.getTime()).toBe(dt1.getTime());
     expect(result.arr1).toEqual(["str1", 15]);
     expect(result.or1).toBe("Hello");
+    expect(result.any1).toEqual(any1);
 });
 it("when values not correct, should throw error", () => {
     const { error } = withError(() => typio({}, { x: 1 }));

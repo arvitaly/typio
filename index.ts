@@ -3,6 +3,7 @@ export { TypioType } from "./TypioType";
 export { isPlainObject } from "./util/isPlainObject";
 export { isObject } from "./util/isObject";
 
+export { any } from "./types/any";
 export { bool } from "./types/bool";
 export { date } from "./types/date";
 export { enume } from "./types/enume";

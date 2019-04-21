@@ -11,6 +11,7 @@ var TestEnum;
 })(TestEnum || (TestEnum = {}));
 it("when all values is correct, should return casted object", () => {
     const dt1 = new Date("2011-01-02 00:00:00");
+    const any1 = { obj: "value" };
     const raw = JSON.parse(JSON.stringify({
         bool1: true,
         str1: 20,
@@ -23,6 +24,7 @@ it("when all values is correct, should return casted object", () => {
         date1: dt1.toString(),
         arr1: ["str1", "15"],
         or1: "Hello",
+        any1,
     }));
     const result = _1.typio(raw, {
         bool1: _1.bool(),
@@ -37,6 +39,7 @@ it("when all values is correct, should return casted object", () => {
         date1: _1.date(),
         arr1: [_1.str(_1.match(new RegExp("str"))), _1.num()],
         or1: _1.or(_1.bool(), _1.num(), _1.str()),
+        any1: _1.any(),
     });
     expect(result.bool1).toBe(true);
     expect(result.str1.substr(0, 2)).toBe("20");
@@ -48,6 +51,7 @@ it("when all values is correct, should return casted object", () => {
     expect(result.date1.getTime()).toBe(dt1.getTime());
     expect(result.arr1).toEqual(["str1", 15]);
     expect(result.or1).toBe("Hello");
+    expect(result.any1).toEqual(any1);
 });
 it("when values not correct, should throw error", () => {
     const { error } = with_error_1.default(() => _1.typio({}, { x: 1 }));
