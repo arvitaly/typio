@@ -1,6 +1,6 @@
 {
     "name": "typio",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "Util for casting any object to specified model with typescript type inference",
     "main": "index.js",
     "scripts": {
