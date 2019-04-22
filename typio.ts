@@ -12,8 +12,8 @@ export function typioValue<T extends any>(
             value: model(obj),
         };
     }
-    if (model instanceof TypioType) {
-        const res = (model as TypioType<any>).cast(obj);
+    if (model._____$TYPIO$ === true) {
+        const res = (model as any as TypioType<any>).cast(obj);
         if (res.type === "error") {
             return {
                 status: "error",

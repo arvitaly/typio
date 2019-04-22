@@ -8,6 +8,7 @@ class TypioType {
         this.operators = operators;
         this.castFn = castFn;
         this.name = name;
+        this._____$TYPIO$ = true;
     }
     cast(obj) {
         const initValue = this.castFn(obj);

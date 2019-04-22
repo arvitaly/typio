@@ -1,5 +1,6 @@
 import { CastResult, TypioOperator } from "./typings";
 export class TypioType<T> {
+    public _____$TYPIO$ = true;
     // tslint:disable-next-line:variable-name
     constructor(
         protected operators: Array<TypioOperator<T>>,

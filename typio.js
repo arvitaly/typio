@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const InvalidTypeError_1 = require("./InvalidTypeError");
-const TypioType_1 = require("./TypioType");
 const isPlainObject_1 = require("./util/isPlainObject");
 function typioValue(obj, model, path = "") {
     if (typeof model === "function") {
@@ -10,7 +9,7 @@ function typioValue(obj, model, path = "") {
             value: model(obj),
         };
     }
-    if (model instanceof TypioType_1.TypioType) {
+    if (model._____$TYPIO$ === true) {
         const res = model.cast(obj);
         if (res.type === "error") {
             return {
