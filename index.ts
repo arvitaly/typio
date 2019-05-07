@@ -10,6 +10,7 @@ export { empty } from "./types/empty";
 export { enume } from "./types/enume";
 export { float } from "./types/float";
 export { int } from "./types/int";
+export { keyof } from "./types/keyof";
 export { num } from "./types/num";
 export { opt } from "./types/opt";
 export { or } from "./types/or";

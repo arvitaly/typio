@@ -6,8 +6,8 @@ const _1 = require(".");
 const InvalidTypeError_1 = require("./InvalidTypeError");
 var TestEnum;
 (function (TestEnum) {
-    TestEnum["EnumValue1"] = "EnumValue1";
-    TestEnum["EnumValue2"] = "EnumValue2";
+    TestEnum["EnumKey1"] = "EnumValue1";
+    TestEnum["EnumKey2"] = "EnumValue2";
 })(TestEnum || (TestEnum = {}));
 it("when all values is correct, should return casted object", () => {
     const dt1 = new Date("2011-01-02 00:00:00");
@@ -25,6 +25,7 @@ it("when all values is correct, should return casted object", () => {
         arr1: ["str1", "15"],
         or1: "Hello",
         any1,
+        keyof1: "EnumKey2",
     }));
     const result = _1.typio(raw, {
         bool1: _1.bool(),
@@ -40,13 +41,14 @@ it("when all values is correct, should return casted object", () => {
         arr1: [_1.str(_1.match(new RegExp("str"))), _1.num()],
         or1: _1.or(_1.bool(), _1.num(), _1.str()),
         any1: _1.any(),
+        keyof1: _1.keyof(TestEnum),
         empty1: _1.empty(),
     });
     expect(result.bool1).toBe(true);
     expect(result.str1.substr(0, 2)).toBe("20");
     expect(result.int1).toBe(30);
     expect(result.num1.toExponential()).toBe("1.45e+0");
-    expect(result.obj1.enum1).toBe(TestEnum.EnumValue1);
+    expect(result.obj1.enum1).toBe(TestEnum.EnumKey1);
     expect(result.opt1).toBe(undefined);
     expect(result.opt2).toBe(-100.5);
     expect(result.date1.getTime()).toBe(dt1.getTime());
@@ -54,6 +56,7 @@ it("when all values is correct, should return casted object", () => {
     expect(result.or1).toBe("Hello");
     expect(result.any1).toEqual(any1);
     expect(result.empty1).toBeUndefined();
+    expect(result.keyof1).toBe("EnumKey2");
 });
 it("when values not correct, should throw error", () => {
     const { error } = with_error_1.default(() => _1.typio({}, { x: 1 }));
