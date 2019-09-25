@@ -1,6 +1,6 @@
 {
     "name": "typio",
-    "version": "0.3.6",
+    "version": "0.3.7",
     "description": "Util for casting any object to specified model with typescript type inference",
     "main": "index.js",
     "scripts": {
@@ -38,11 +38,11 @@
         ]
     },
     "devDependencies": {
-        "@types/jest": "^24.0.14",
-        "coveralls": "^3.0.4",
-        "jest": "^24.8.0",
-        "tslint": "^5.17.0",
-        "typescript": "^3.5.2",
+        "@types/jest": "^24.0.18",
+        "coveralls": "^3.0.6",
+        "jest": "^24.9.0",
+        "tslint": "^5.20.0",
+        "typescript": "^3.6.3",
         "with-error": "^0.1.2"
     }
 }
