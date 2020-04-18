@@ -14,7 +14,7 @@ export function cast(value: any): CastResult<string> {
         value: value.toString(),
     };
 }
-export function str(...operators: Array<TypioOperator<string>>): string {
+export function str(...operators: TypioOperator<string>[]): string {
     return new TypioType(operators, cast, "str") as any;
 }
 export default str;

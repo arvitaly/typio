@@ -15,7 +15,7 @@ export function cast(value: any): CastResult<boolean> {
     };
 }
 
-export function bool(...operators: Array<TypioOperator<boolean>>): boolean {
+export function bool(...operators: TypioOperator<boolean>[]): boolean {
     return new TypioType(operators, cast, "bool") as any;
 }
 export default bool;

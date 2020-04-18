@@ -23,7 +23,7 @@ function runTestsForCasting(cast, tests) {
                         expect(cast(expectation.value)).toEqual(expectation.expected);
                     }
                     else {
-                        expect(cast(expectation.value)).toEqual(Object.assign({}, expectation.expected, { value: expectation.value }));
+                        expect(cast(expectation.value)).toEqual(Object.assign(Object.assign({}, expectation.expected), { value: expectation.value }));
                     }
                 });
             }

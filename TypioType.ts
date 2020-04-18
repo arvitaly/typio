@@ -3,7 +3,7 @@ export class TypioType<T> {
     public _____$TYPIO$ = true;
     // tslint:disable-next-line:variable-name
     constructor(
-        protected operators: Array<TypioOperator<T>>,
+        protected operators: TypioOperator<T>[],
         protected castFn: (value: any) => CastResult<T>,
         // tslint:disable-next-line:variable-name
         public name = "",

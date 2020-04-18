@@ -16,7 +16,7 @@ export function cast(value: any): CastResult<number> {
     };
 }
 
-export function int(...operators: Array<TypioOperator<number>>): number {
+export function int(...operators: TypioOperator<number>[]): number {
     return new TypioType(operators, cast, "int") as any;
 }
 export default int;

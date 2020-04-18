@@ -12,14 +12,17 @@ export function expectSuccess(value: any) {
         value,
     };
 }
-export function runTestsForCasting(cast: (value: any) => CastResult<any>, tests: Array<{
-    describe: string;
-    expectations: Array<{
-        name: string;
-        expected: any;
-        value: any;
-    }>;
-}>) {
+export function runTestsForCasting(
+    cast: (value: any) => CastResult<any>,
+    tests: {
+        describe: string;
+        expectations: {
+            name: string;
+            expected: any;
+            value: any;
+        }[];
+    }[],
+) {
     for (const test of tests) {
         describe(test.describe, () => {
             for (const expectation of test.expectations) {

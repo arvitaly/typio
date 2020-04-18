@@ -16,7 +16,7 @@ export function cast(value: any): CastResult<Date> {
     };
 }
 
-export function date(...operators: Array<TypioOperator<Date>>): Date {
+export function date(...operators: TypioOperator<Date>[]): Date {
     return new TypioType(operators, cast, "date") as any;
 }
 export default date;
