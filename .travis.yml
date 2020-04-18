@@ -1,15 +1,8 @@
 language: node_js
 node_js:
-- '6'
+- '10'
 install:
 - npm install
 script:
 - npm test
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-deploy:
-  provider: npm
-  email: arvitaly@list.ru
-  api_key:
-    secure: Y264ocNvQujKs6bE1XfR3d17Qi230dLhi8dSfQGTQR5coBm200ewvcqa5RFDYLDkEaWodPYWdCbdVgtYa/N3BgChIyk04LzwTe32vMaR19M2oXvwX/w0WvWZXUySqZyy3wZLdd4MsBAf5lMqhLD8hZ2+5i1tMxIoum/ZDuc7Es1sxpQ6lUFDo9YFN/BbYLaX51QM8ls97qT2606hC0eV3qhzW+bgKE+GKByU2Q7GoaVHJdxMzFtQLjQP6ohjybljrbRZT9qnp2E1IUdgyAT6Bb0kGPM8ayOqKKv/7BGUVt+mv6xaiH6lY3ff0iUi+6ZQ4ysj8b/+Hpt+D1cbJLT03k6sUFrkIAmWD6Sh1qxa3YJsfpqrUQjuaeKVAQfZZSc5sc4ondDsin2JTTyC9+7hDjv+TTeeaBivGhqdOA+p2hOcv/suP6uq+9nSdfPDiMlLOnNT3rOsUqeYHLOZg8VspUDs1M5pSB4oc0IZKszHR2zNEynawdNbvNlfQdb/MP9/h0Ovr43C8/WTm5DTHHmE0rvps8RdBXZUvplrGZthu90Y0zfy12dLiixtC8eRxNQCMuJIWbZZBQ6sSCfiBpWxRR2zwFM2bwXwHxSQ9wQu0nR81njIar2L3XVsflpg9aIIaD0g0PBdWOLpZGWLKp8XF+17swNb7bMS/oWa4k59wJc=
-  on:
-    tags: true
