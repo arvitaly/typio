@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.or = exports.cast = void 0;
 const typio_1 = require("./../typio");
 const TypioType_1 = require("../TypioType");
 function cast(objs, value) {

@@ -32,12 +32,10 @@ describe("max tests", () => {
             expect(max_1.max(new Date(dtEqual))(new Date(dtLess))).toBe(true);
         });
         it("when value is Date and greater than model should return error-string", () => {
-            expect(max_1.max(new Date(dtEqual))(new Date(dtGreater)))
-                .toBe("Value should be less or equal " + dtEqual);
+            expect(max_1.max(new Date(dtEqual))(new Date(dtGreater))).toBe("Value should be less or equal " + dtEqual);
         });
         it("when value is not Date, but model is Date, should return error-string", () => {
-            expect(max_1.max(new Date(dtEqual))(""))
-                .toBe("Value should be instance of Date");
+            expect(max_1.max(new Date(dtEqual))("")).toBe("Value should be instance of Date");
         });
     });
     describe("array", () => {

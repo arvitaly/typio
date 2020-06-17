@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TypioType = void 0;
 class TypioType {
     // tslint:disable-next-line:variable-name
     constructor(operators, castFn, 

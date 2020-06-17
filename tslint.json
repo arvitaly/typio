@@ -1,13 +1,13 @@
 {
-    "extends": ["tslint:latest"],
-    "rules": {
-        "object-literal-sort-keys": false,
-        "no-implicit-dependencies": false,
-        "no-submodule-imports": false,
-        "semicolon": [true, "always", "ignore-bound-class-methods"],
-        "ordered-imports": false,
-        "member-access": false,
-        "interface-name": false,
-        "callable-types": false
-    }
+  "extends": ["tslint:latest"],
+  "rules": {
+    "object-literal-sort-keys": false,
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "ordered-imports": false,
+    "member-access": false,
+    "interface-name": false,
+    "callable-types": false
+  }
 }

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.formatError = exports.InvalidTypeError = void 0;
 class InvalidTypeError extends Error {
     constructor(config) {
         const errorStr = formatError(config);

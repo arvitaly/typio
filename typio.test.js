@@ -17,11 +17,19 @@ describe("typio tests", () => {
         expect(typio_1.typio("test", (value) => value + "1")).toBe("test1");
     });
     it("when model is instance of TypioType and cast method return success should return value", () => {
-        const typ = new TypioType_1.TypioType([], (value) => ({ type: "success", value: value + "1" }));
+        const typ = new TypioType_1.TypioType([], (value) => ({
+            type: "success",
+            value: value + "1",
+        }));
         expect(typio_1.typio("test", typ)).toBe("test1");
     });
     it("when model is instance of TypioType and cast method return error should throw error", () => {
-        const typ = new TypioType_1.TypioType([], (value) => ({ type: "error", error: "error1", operator: "oper1", value }));
+        const typ = new TypioType_1.TypioType([], (value) => ({
+            type: "error",
+            error: "error1",
+            operator: "oper1",
+            value,
+        }));
         expect(with_error_1.default(() => typio_1.typio("testError", typ)).error).toEqual(new InvalidTypeError_1.InvalidTypeError({
             path: "",
             value: "testError",
@@ -45,7 +53,8 @@ describe("typio tests", () => {
             operator: undefined,
         }));
     });
-    it("when model is array and value is array and model length is one," + " should apply first model to every values", () => {
+    it("when model is array and value is array and model length is one," +
+        " should apply first model to every values", () => {
         expect(typio_1.typio([1, 1], [1])).toEqual([1, 1]);
     });
     it("when model is array and value is array and model length more than one," +
@@ -65,7 +74,11 @@ describe("typio tests", () => {
     it("when model and value is plain-object and value has unknown keys should throw error", () => {
         expect(with_error_1.default(() => typio_1.typio({ a: 1, b: 2 }, { a: 1 })).error).toEqual(new InvalidTypeError_1.InvalidTypeError({
             path: "",
-            message: "Unknown keys " + JSON.stringify(["b"]) + " in object `" + JSON.stringify({ a: 1, b: 2 }) + "`",
+            message: "Unknown keys " +
+                JSON.stringify(["b"]) +
+                " in object `" +
+                JSON.stringify({ a: 1, b: 2 }) +
+                "`",
             value: { a: 1, b: 2 },
         }));
     });

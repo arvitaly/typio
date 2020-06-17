@@ -1,48 +1,48 @@
 {
-    "name": "typio",
-    "version": "0.3.8",
-    "description": "Util for casting any object to specified model with typescript type inference",
-    "main": "index.js",
-    "scripts": {
-        "test": "tsc && tslint --project tsconfig.json && jest --verbose --coverage",
-        "watch:test": "jest --watch"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/arvitaly/typio.git"
-    },
-    "keywords": [
-        "types",
-        "typescript",
-        "cast",
-        "interfaces",
-        "check"
+  "name": "typio",
+  "version": "0.3.9",
+  "description": "Util for casting any object to specified model with typescript type inference",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && tslint --project tsconfig.json && jest --verbose --coverage",
+    "watch:test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arvitaly/typio.git"
+  },
+  "keywords": [
+    "types",
+    "typescript",
+    "cast",
+    "interfaces",
+    "check"
+  ],
+  "author": "arvitaly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arvitaly/typio/issues"
+  },
+  "homepage": "https://github.com/arvitaly/typio#readme",
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/**/*.{js,jsx}",
+      "!<rootDir>/coverage/**",
+      "!<rootDir>/util/isNumeric.js",
+      "!<rootDir>/util/isObject.js",
+      "!<rootDir>/util/isPlainObject.js"
     ],
-    "author": "arvitaly",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/arvitaly/typio/issues"
-    },
-    "homepage": "https://github.com/arvitaly/typio#readme",
-    "jest": {
-        "collectCoverageFrom": [
-            "<rootDir>/**/*.{js,jsx}",
-            "!<rootDir>/coverage/**",
-            "!<rootDir>/util/isNumeric.js",
-            "!<rootDir>/util/isObject.js",
-            "!<rootDir>/util/isPlainObject.js"
-        ],
-        "testMatch": [
-            "**/__tests__/**/*.js",
-            "**/?(*.)+(spec|test).js"
-        ]
-    },
-    "devDependencies": {
-        "@types/jest": "^25.2.1",
-        "coveralls": "^3.0.11",
-        "jest": "^25.3.0",
-        "tslint": "^6.1.1",
-        "typescript": "^3.8.3",
-        "with-error": "^0.1.5"
-    }
+    "testMatch": [
+      "**/__tests__/**/*.js",
+      "**/?(*.)+(spec|test).js"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "coveralls": "^3.0.11",
+    "jest": "^25.3.0",
+    "tslint": "^6.1.1",
+    "typescript": "^3.8.3",
+    "with-error": "^0.1.5"
+  }
 }

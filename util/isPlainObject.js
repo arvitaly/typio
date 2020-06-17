@@ -6,10 +6,11 @@
  * Released under the MIT License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.isPlainObject = exports.isObjectObject = void 0;
 const isObject_1 = require("./isObject");
 function isObjectObject(o) {
-    return isObject_1.isObject(o) === true
-        && Object.prototype.toString.call(o) === "[object Object]";
+    return (isObject_1.isObject(o) === true &&
+        Object.prototype.toString.call(o) === "[object Object]");
 }
 exports.isObjectObject = isObjectObject;
 function isPlainObject(o) {

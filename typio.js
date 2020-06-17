@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.typio = exports.typioValue = void 0;
 const InvalidTypeError_1 = require("./InvalidTypeError");
 const isPlainObject_1 = require("./util/isPlainObject");
 function typioValue(obj, model, path = "") {
@@ -9,7 +10,9 @@ function typioValue(obj, model, path = "") {
             value: model(obj),
         };
     }
-    if (model._____$TYPIO$ === true) {
+    if (model._____$TYPIO$ === true &&
+        (typeof obj !== "undefined" ||
+            model.name === "empty")) {
         const res = model.cast(obj);
         if (res.type === "error") {
             return {
@@ -29,7 +32,9 @@ function typioValue(obj, model, path = "") {
             status: "error",
             error: new InvalidTypeError_1.InvalidTypeError({
                 path,
-                message: "For model `" + JSON.stringify(model) + "` value should not be undefined",
+                message: "For model `" +
+                    JSON.stringify(model) +
+                    "` value should not be undefined",
                 value: obj,
             }),
         };
@@ -86,7 +91,11 @@ function typioValue(obj, model, path = "") {
                 status: "error",
                 error: new InvalidTypeError_1.InvalidTypeError({
                     path,
-                    message: "Unknown keys " + JSON.stringify(objKeys) + " in object `" + JSON.stringify(obj) + "`",
+                    message: "Unknown keys " +
+                        JSON.stringify(objKeys) +
+                        " in object `" +
+                        JSON.stringify(obj) +
+                        "`",
                     value: obj,
                 }),
             };

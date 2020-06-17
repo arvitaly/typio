@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.int = exports.cast = void 0;
 const TypioType_1 = require("./../TypioType");
 function cast(value) {
     const intValue = parseInt(value, 10);
